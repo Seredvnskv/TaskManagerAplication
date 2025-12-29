@@ -13,5 +13,6 @@ Content-Type: application/json
 {
   "title": "TEST",
   "description": "TEST",
+  "dueDate": "2028-01-06T02:41:53.253473Z",
   "status": "DONE"
 }

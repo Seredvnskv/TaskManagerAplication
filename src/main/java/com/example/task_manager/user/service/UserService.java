@@ -35,14 +35,7 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public User updateUser(UUID id, User userDetails) {
-        return userRepository.findById(id).map(user -> {
-            user.setUsername(userDetails.getUsername());
-            user.setEmail(userDetails.getEmail());
-            user.setPassword(userDetails.getPassword());
-            user.setRole(userDetails.getRole());
-            user.setUpdatedAt(Instant.now());
-            return userRepository.save(user);
-        }).orElseThrow(() -> new RuntimeException("User not found"));
+
     }
 
     @Override
