@@ -38,4 +38,6 @@ public class TaskMapper {
     public List<ReadTaskDTO> toDTO(List<Task> tasks) {
         return tasks.stream().map(task -> this.toDTO(task)).toList();
     }
+
+
 }

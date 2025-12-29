@@ -1,10 +1,13 @@
 package com.example.task_manager.task.service;
 
 import com.example.task_manager.task.Task;
+import com.example.task_manager.task.dto.UpdateTaskDTO;
 import com.example.task_manager.task.repository.TaskRepository;
+import com.example.task_manager.task.status.TaskStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -52,14 +55,21 @@ public class TaskService implements TaskServiceInterface {
     }
 
     @Override
-    public Task updateTask(Task task) {
-        return taskRepository.findById(task.getId()).map(existingTask -> {
-            existingTask.setTitle(task.getTitle());
-            existingTask.setDescription(task.getDescription());
-            existingTask.setStatus(task.getStatus());
-            existingTask.setAssignedUsers(task.getAssignedUsers());
-            return taskRepository.save(existingTask);
-        }).orElseThrow(() -> new RuntimeException("Task not found"));
+    public Task updateTask(Task task, UpdateTaskDTO updateTaskDTO) {
+        if (updateTaskDTO.getTitle() != null) {
+            task.setTitle(updateTaskDTO.getTitle());
+        }
+        if (updateTaskDTO.getDescription() != null) {
+            task.setDescription(updateTaskDTO.getDescription());
+        }
+        if (updateTaskDTO.getStatus() != null) {
+            task.setStatus(TaskStatus.valueOf(updateTaskDTO.getStatus()));
+        }
+        if (updateTaskDTO.getDueDate() != null) {
+            task.setDueDate(Instant.parse(updateTaskDTO.getDueDate()));
+        }
+
+        return taskRepository.save(task);
     }
 
     @Override

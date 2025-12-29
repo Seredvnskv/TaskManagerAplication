@@ -1,6 +1,7 @@
 package com.example.task_manager.task.service;
 
 import com.example.task_manager.task.Task;
+import com.example.task_manager.task.dto.UpdateTaskDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,6 @@ public interface TaskServiceInterface {
     Optional<Task> getTaskByTitle(String title);
     List<Task> getTasksByUserId(UUID id);
     Task createTask(Task task);
-    Task updateTask(Task task);
+    Task updateTask(Task task, UpdateTaskDTO updateTaskDTO);
     void deleteTask(UUID id);
 }

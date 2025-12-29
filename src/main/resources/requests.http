@@ -1,0 +1,17 @@
+@title=Sample Task 1
+
+### GET TASKS
+GET http://localhost:8080/api/tasks
+
+### GET TASK BY TITLE
+GET http://localhost:8080/api/tasks/title/{{title}}
+
+### PATCH TASK
+PATCH http://localhost:8080/api/tasks/title/{{title}}
+Content-Type: application/json
+
+{
+  "title": "TEST",
+  "description": "TEST",
+  "status": "DONE"
+}
