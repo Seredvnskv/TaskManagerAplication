@@ -7,6 +7,7 @@ import java.util.List;
 
 @Value
 public class ReadTaskDTO {
+    String id;
     String title;
     String description;
     String status;

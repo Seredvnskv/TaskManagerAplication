@@ -22,6 +22,7 @@ public class TaskMapper {
 
     public ReadTaskDTO toDTO(Task task) {
         return new ReadTaskDTO(
+                task.getId().toString(),
                 task.getTitle(),
                 task.getDescription(),
                 task.getStatus().toString(),
