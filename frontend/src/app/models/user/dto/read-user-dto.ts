@@ -4,6 +4,6 @@ export interface ReadUserDTO {
   id: string;
   username: string;
   email: string;
-  createdAt: Date;
   role: string;
+  createdAt: Date;
 }

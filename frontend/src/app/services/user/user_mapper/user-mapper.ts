@@ -2,6 +2,7 @@ import {ReadUserDTO} from '../../../models/user/dto/read-user-dto';
 import {User} from '../../../models/user/user';
 import {Role} from '../../../models/enums/role/role';
 import {Injectable} from '@angular/core';
+import {ReadTaskDTO} from '../../../models/task/dto/read-task-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class UserMapper {
       createdAt: entity.createdAt,
       role: Role[entity.role],
     };
+  }
+
+  collectionDtoToEntity(dtos: ReadUserDTO[]): User[] {
+    return dtos.map(dto => this.toEntity(dto));
   }
 }

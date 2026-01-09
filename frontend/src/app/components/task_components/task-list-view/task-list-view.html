@@ -1,1 +1,79 @@
-<p>task-list-view works!</p>
+<section class="task-board">
+  <div class="task-column">
+    <div class="column-header todo-header">
+      <h2>To Do</h2>
+      <span class="task-count">{{ getTasksByStatus(TaskStatus.TODO).length }}</span>
+    </div>
+    <div class="task-container">
+      @if (getTasksByStatus(TaskStatus.TODO).length === 0) {
+        <div class="empty-state">
+          No tasks to do
+        </div>
+      }
+      @else {
+        @for (task of getTasksByStatus(TaskStatus.TODO); track task.id) {
+          <div class="task-card">
+            <h3 class="task-title">{{ task.title }}</h3>
+            <p class="task-description">{{ task.description }}</p>
+            <div class="task-meta">
+              <span class="task-creator">Created by: {{ task.createdBy }}</span>
+              <span class="task-due-date">Due: {{ task.dueDate | date:'short' }}</span>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="task-column">
+    <div class="column-header in-progress-header">
+      <h2>In Progress</h2>
+      <span class="task-count">{{ getTasksByStatus(TaskStatus.IN_PROGRESS).length }}</span>
+    </div>
+    <div class="task-container">
+      @if (getTasksByStatus(TaskStatus.IN_PROGRESS).length === 0) {
+        <div class="empty-state">
+          No tasks to do
+        </div>
+      }
+      @else {
+        @for (task of getTasksByStatus(TaskStatus.IN_PROGRESS); track task.id) {
+          <div class="task-card">
+            <h3 class="task-title">{{ task.title }}</h3>
+            <p class="task-description">{{ task.description }}</p>
+            <div class="task-meta">
+              <span class="task-creator">Created by: {{ task.createdBy }}</span>
+              <span class="task-due-date">Due: {{ task.dueDate | date:'short' }}</span>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="task-column">
+    <div class="column-header done-header">
+      <h2>Done</h2>
+      <span class="task-count">{{ getTasksByStatus(TaskStatus.DONE).length }}</span>
+    </div>
+    <div class="task-container">
+      @if (getTasksByStatus(TaskStatus.DONE).length === 0) {
+        <div class="empty-state">
+          No tasks to do
+        </div>
+      }
+      @else {
+        @for (task of getTasksByStatus(TaskStatus.DONE); track task.id) {
+          <div class="task-card">
+            <h3 class="task-title">{{ task.title }}</h3>
+            <p class="task-description">{{ task.description }}</p>
+            <div class="task-meta">
+              <span class="task-creator">Created by: {{ task.createdBy }}</span>
+              <span class="task-due-date">Due: {{ task.dueDate | date:'short' }}</span>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>
